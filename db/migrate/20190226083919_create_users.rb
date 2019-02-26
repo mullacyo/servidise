@@ -9,8 +9,10 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :city
       t.integer :nric
       t.string :avatar
-      t.integer :roles
+      t.integer :roles, default: 0
       t.integer :tags
+      t.timestamps null: false
     end
+    add_index :users, :email
   end
 end
