@@ -35,18 +35,20 @@ ActiveRecord::Schema.define(version: 2019_02_27_153719) do
     t.integer "tags"
     t.boolean "completion_status", default: false
     t.boolean "payment_status", default: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.integer "gender"
-    t.integer "phone"
-    t.string "email"
+    t.integer "phone", null: false
+    t.string "email", null: false
     t.string "city"
-    t.integer "nric"
+    t.integer "nric", null: false
     t.string "avatar"
     t.integer "roles", default: 0
     t.integer "tags"
@@ -76,4 +78,5 @@ ActiveRecord::Schema.define(version: 2019_02_27_153719) do
 
   add_foreign_key "comments", "tasks"
   add_foreign_key "comments", "users"
+  add_foreign_key "tasks", "users"
 end
