@@ -2,7 +2,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
   def change
     create_table :tasks do |t|
       t.string :name, null: false
-      t.string :description
+      t.string :description, null: false
       t.json :pictures
       t.float :price, null: false
       t.datetime :duedate
@@ -10,6 +10,7 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.integer :tags
       t.boolean :completion_status, default: false
       t.boolean :payment_status, default: false
+      t.timestamps null:false
     end
   end
 end
