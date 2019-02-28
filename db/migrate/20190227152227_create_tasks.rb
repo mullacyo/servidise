@@ -10,7 +10,6 @@ class CreateTasks < ActiveRecord::Migration[5.2]
       t.integer :tags
       t.boolean :completion_status, default: false
       t.boolean :payment_status, default: false
-    	t.belongs_to :user, foreign_key: true
       t.timestamps null:false
     end
   end
